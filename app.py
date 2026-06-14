@@ -231,20 +231,20 @@ if st.session_state.data_loaded:
 
     st.markdown("---")
 
-    # Define Multi-page Navigation with beautiful icons
+    # Define Multi-page Navigation with professional Material Icons
     pages = {
         "Attribution Analytics": [
-            st.Page("views/overview.py", title="Attribution Comparisons", icon="📊"),
-            st.Page("views/flow.py", title="Markov Chain Flow", icon="🔄"),
-            st.Page("views/path_explorer.py", title="Journey Path Explorer", icon="🧭")
+            st.Page("views/overview.py", title="Attribution Comparisons", icon=":material/bar_chart:"),
+            st.Page("views/flow.py", title="Markov Chain Flow", icon=":material/route:"),
+            st.Page("views/path_explorer.py", title="Journey Path Explorer", icon=":material/explore:")
         ],
         "Planning & Optimization": [
-            st.Page("views/simulator.py", title="Channel Blocking Sandbox", icon="🚧"),
-            st.Page("views/roi.py", title="Budget Reallocation & ROI", icon="💰"),
-            st.Page("views/data_uploader.py", title="Data Upload & Settings", icon="⚙️")
+            st.Page("views/simulator.py", title="Channel Blocking Sandbox", icon=":material/block:"),
+            st.Page("views/roi.py", title="Budget Reallocation & ROI", icon=":material/payments:"),
+            st.Page("views/data_uploader.py", title="Data Upload & Settings", icon=":material/settings:")
         ],
         "Information": [
-            st.Page("views/about.py", title="About & Methodology", icon="📚")
+            st.Page("views/about.py", title="About & Methodology", icon=":material/menu_book:")
         ]
     }
     
