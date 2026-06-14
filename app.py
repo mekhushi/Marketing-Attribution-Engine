@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import os
+import sys
 
 # Set page configurations (MUST be the first Streamlit command)
 st.set_page_config(
@@ -74,8 +75,8 @@ st.markdown("""
 def load_data():
     if not os.path.exists("attribution_results.csv") or not os.path.exists("user_journeys.csv"):
         import subprocess
-        subprocess.run(["python", "generate_data.py"])
-        subprocess.run(["python", "attribution_model.py"])
+        subprocess.run([sys.executable, "generate_data.py"])
+        subprocess.run([sys.executable, "attribution_model.py"])
         
     df_results = pd.read_csv("attribution_results.csv")
     df_transition = pd.read_csv("transition_matrix.csv", index_col=0)

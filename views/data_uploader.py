@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import subprocess
 import os
+import sys
 
 st.markdown("## Data Upload & Settings")
 st.markdown("""
@@ -63,7 +64,7 @@ if uploaded_file is not None:
                         df_full.to_csv("user_journeys.csv", index=False)
                         
                         # Re-run calculations
-                        res = subprocess.run(["python", "attribution_model.py"], capture_output=True, text=True)
+                        res = subprocess.run([sys.executable, "attribution_model.py"], capture_output=True, text=True)
                         
                         if res.returncode == 0:
                             # Clear streamlit cache
@@ -96,8 +97,8 @@ with col_reset1:
     if st.button("Reset to Default Generated Dataset"):
         with st.spinner("Generating clean mock dataset and running calculations..."):
             try:
-                subprocess.run(["python", "generate_data.py"])
-                res = subprocess.run(["python", "attribution_model.py"], capture_output=True, text=True)
+                subprocess.run([sys.executable, "generate_data.py"])
+                res = subprocess.run([sys.executable, "attribution_model.py"], capture_output=True, text=True)
                 
                 if res.returncode == 0:
                     st.cache_data.clear()
@@ -122,7 +123,7 @@ with col_reset2:
     if st.button("Force Recompute Markov Models"):
         with st.spinner("Running math calculations..."):
             try:
-                res = subprocess.run(["python", "attribution_model.py"], capture_output=True, text=True)
+                res = subprocess.run([sys.executable, "attribution_model.py"], capture_output=True, text=True)
                 if res.returncode == 0:
                     st.cache_data.clear()
                     
