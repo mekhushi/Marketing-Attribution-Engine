@@ -2,12 +2,14 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-st.markdown("## Attribution Comparisons")
 st.markdown("""
-Compare how different attribution models distribute conversion credits across channels. 
-Traditional models like **Last Touch** overvalue end-of-funnel channels, while the **Markov Chain model** uses 
-a probabilistic "Removal Effect" to capture true assist value.
-""")
+<div style="margin-bottom: 25px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+    <h2 style="margin: 0; color: #ffffff; font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em;">Attribution Comparisons</h2>
+    <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">
+        Compare how different attribution models distribute conversion credits. Traditional models like Last Touch tend to overvalue end-of-funnel interactions, while the Markov Chain model uses a probabilistic Removal Effect to capture true assist values.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 if "df_results" in st.session_state:
     df_results = st.session_state.df_results

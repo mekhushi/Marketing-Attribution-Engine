@@ -4,12 +4,14 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 
-st.markdown("## Channel Blocking Sandbox")
 st.markdown("""
-Simulate what happens if one or more channels are shut down or completely blocked from the customer journey. 
-The Markov Chain transitions and absorption rates are re-calculated dynamically to show how customer paths 
-get disrupted and how many conversions are lost.
-""")
+<div style="margin-bottom: 25px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+    <h2 style="margin: 0; color: #ffffff; font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em;">Channel Blocking Sandbox</h2>
+    <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">
+        Simulate shutting down or blocking marketing channels. Dynamically recalculate transition matrices, absorption rates, and overall conversions lost to see the impact of channel elimination.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 def simulate_channel_blocking(df_trans, blocked_channels):
     P = df_trans.copy()

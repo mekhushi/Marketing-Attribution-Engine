@@ -2,11 +2,14 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-st.markdown("## Budget Reallocation & ROI")
 st.markdown("""
-Optimize your marketing budget allocation using mathematical attribution weights rather than biased heuristics. 
-Compare recommended budget splits, and check the financial impact on ROAS and CAC across all channels.
-""")
+<div style="margin-bottom: 25px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+    <h2 style="margin: 0; color: #ffffff; font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em;">Budget Reallocation & ROI</h2>
+    <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">
+        Optimize budget allocations using attribution weights. Compare recommended splits against heuristic budgets to calculate Return on Ad Spend (ROAS) and Customer Acquisition Costs (CAC).
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 if "df_results" in st.session_state and "total_budget" in st.session_state:
     df_results = st.session_state.df_results

@@ -1,11 +1,13 @@
 import streamlit as st
 
-st.markdown("## About & Methodology")
 st.markdown("""
-**Attribo** is an advanced Multi-Touch Marketing Attribution Engine designed to solve the "last-click bias" in digital marketing analytics. 
-Instead of attributing 100% of conversion credit to the final touchpoint, this engine models the complete, 
-chronological path of customer interactions to accurately capture top-of-funnel assist value.
-""")
+<div style="margin-bottom: 25px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+    <h2 style="margin: 0; color: #ffffff; font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em;">About & Methodology</h2>
+    <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">
+        Learn about the concepts behind multi-touch marketing attribution. Read the business motivations and mathematical calculations for heuristics and Markov chains.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 st.markdown("<div class='highlight-card'>", unsafe_allow_html=True)
 st.markdown("### The Business Problem")

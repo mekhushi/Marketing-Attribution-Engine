@@ -4,11 +4,14 @@ import subprocess
 import os
 import sys
 
-st.markdown("## Data Upload & Settings")
 st.markdown("""
-Upload your multi-touch marketing event log to recalculate Heuristic and Markov attribution weights. 
-Ensure your file contains the proper schema before uploading.
-""")
+<div style="margin-bottom: 25px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+    <h2 style="margin: 0; color: #ffffff; font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em;">Data Upload & Settings</h2>
+    <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">
+        Upload multi-touch customer event logs to run custom attribution models. Review schema guidelines below or manage the background databases.
+    </p>
+</div>
+""", unsafe_allow_html=True)
 
 REQUIRED_COLUMNS = ['user_id', 'timestamp', 'channel', 'converted']
 
