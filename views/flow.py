@@ -3,14 +3,12 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
+st.markdown("## Markov Chain Flow Analytics")
 st.markdown("""
-<div style="margin-bottom: 25px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-    <h2 style="margin: 0; color: #ffffff; font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em;">Markov Chain Flow Analytics</h2>
-    <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">
-        Examine the mathematical pathways customers take between discovery and conversion. Analyze transitions between touchpoints via the transition probability heatmap and volume-based Sankey flow diagram.
-    </p>
-</div>
-""", unsafe_allow_html=True)
+Examine the mathematical pathways customers take between discovery and conversion. 
+The heatmap shows the probability of moving from one channel to another, while the Sankey chart 
+visualizes the actual volume flow of user journeys.
+""")
 
 if "df_transition" in st.session_state and "df_results" in st.session_state:
     df_transition = st.session_state.df_transition

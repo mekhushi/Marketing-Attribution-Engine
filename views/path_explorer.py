@@ -2,14 +2,11 @@ import streamlit as st
 import pandas as pd
 from collections import Counter
 
+st.markdown("## Journey Path Explorer")
 st.markdown("""
-<div style="margin-bottom: 25px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-    <h2 style="margin: 0; color: #ffffff; font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em;">Journey Path Explorer</h2>
-    <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 0.95rem; line-height: 1.5;">
-        Drill down into individual customer journeys. Reconstruct touchpoint sequences, identify high-volume converting paths, and filter user sessions by conversion state or channel involvement.
-    </p>
-</div>
-""", unsafe_allow_html=True)
+Drill down into individual customer journeys. Reconstruct sequences, analyze the most common pathways 
+converting leads, and filter paths by length, channel involvement, and final conversion state.
+""")
 
 @st.cache_data
 def get_user_paths(df_raw):

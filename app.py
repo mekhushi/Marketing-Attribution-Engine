@@ -5,7 +5,7 @@ import os
 import sys
 
 st.set_page_config(
-    page_title="Marketing Attribution Suite",
+    page_title="Attribo - Marketing Attribution Engine",
     page_icon="🎯",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -13,119 +13,192 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
     
-    html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
+    html, body, [data-testid="stAppViewContainer"], [data-testid="stSidebar"], .main {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    [data-testid="stAppViewContainer"] {
+        background-color: #09090b !important;
+        color: #f4f4f5 !important;
     }
     
     .main {
-        background-color: #0b0f19;
-        color: #f1f5f9;
+        background-color: transparent !important;
+        color: #f4f4f5 !important;
     }
     
+    [data-testid="stHeader"] {
+        background-color: transparent !important;
+    }
     
     [data-testid="stSidebar"] {
-        background-color: #090d16 !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+        background-color: #09090b !important;
+        border-right: 1px solid #27272a !important;
     }
-    
     
     [data-testid="stSidebarNavHeader"], 
     div[data-testid="stSidebarNavItems"] > div > span {
-        font-size: 0.75rem !important;
+        font-size: 0.65rem !important;
         font-weight: 700 !important;
-        color: #64748b !important; 
+        color: #71717a !important; 
         text-transform: uppercase !important;
         letter-spacing: 0.1em !important;
-        padding: 18px 0 6px 12px !important;
+        padding: 24px 0 8px 16px !important;
         display: block;
     }
-    
     
     [data-testid="stSidebarNavItems"] a, 
     div[data-testid="stSidebarNavItems"] ul li a {
         border-radius: 8px !important;
-        margin: 4px 10px !important;
-        padding: 8px 14px !important;
-        color: #94a3b8 !important; 
-        font-size: 0.9rem !important;
+        margin: 2px 12px !important;
+        padding: 8px 12px !important;
+        color: #a1a1aa !important; 
+        font-size: 0.85rem !important;
         font-weight: 500 !important;
-        transition: all 0.2s ease-in-out !important;
+        transition: all 0.15s ease !important;
         text-decoration: none !important;
         display: flex !important;
         align-items: center !important;
     }
     
-    
     [data-testid="stSidebarNavItems"] a:hover, 
     div[data-testid="stSidebarNavItems"] ul li a:hover {
-        background: rgba(255, 255, 255, 0.05) !important;
-        color: #f8fafc !important; 
+        background: #18181b !important;
+        color: #fafafa !important; 
     }
-    
     
     [data-testid="stSidebarNavItems"] a[aria-current="page"], 
     div[data-testid="stSidebarNavItems"] ul li a[aria-current="page"] {
-        background: linear-gradient(90deg, rgba(56, 189, 248, 0.15) 0%, rgba(56, 189, 248, 0.01) 100%) !important;
-        color: #38bdf8 !important; 
+        background: #18181b !important;
+        color: #ffffff !important; 
         font-weight: 600 !important;
-        border-left: 3px solid #38bdf8 !important;
-        padding-left: 11px !important; 
-        box-shadow: inset 2px 0 8px rgba(56, 189, 248, 0.05);
+        border-left: none !important;
+        padding-left: 12px !important; 
     }
-    
     
     [data-testid="stSidebar"] .stNumberInput, 
     [data-testid="stSidebar"] .stSlider {
-        background: rgba(255, 255, 255, 0.02);
-        padding: 12px;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        margin-bottom: 12px;
+        background: #09090b !important;
+        padding: 12px !important;
+        border-radius: 8px !important;
+        border: 1px solid #27272a !important;
+        margin-bottom: 12px !important;
     }
     
-    .stMetric {
-        background: rgba(30, 41, 59, 0.4);
-        border-radius: 12px;
-        padding: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    /* Clean Minimal Metric Cards (Vercel/Linear style) */
+    div[data-testid="stMetric"] {
+        background: #09090b !important;
+        border: 1px solid #27272a !important;
+        border-radius: 8px !important;
+        padding: 16px !important;
+        transition: border-color 0.2s ease !important;
+        box-shadow: none !important;
+    }
+    
+    div[data-testid="stMetric"]:hover {
+        border-color: #3f3f46 !important;
     }
     
     div[data-testid="stMetricValue"] {
-        color: #38bdf8 !important;
-        font-size: 2.2rem !important;
-        font-weight: 700;
+        color: #ffffff !important;
+        font-size: 1.8rem !important;
+        font-weight: 700 !important;
+        letter-spacing: -0.02em !important;
     }
     
     div[data-testid="stMetricLabel"] {
-        color: #94a3b8 !important;
-        font-size: 0.95rem !important;
-        font-weight: 500;
+        color: #71717a !important;
+        font-size: 0.8rem !important;
+        font-weight: 500 !important;
+        text-transform: none !important;
+        letter-spacing: normal !important;
+        margin-bottom: 4px !important;
     }
     
-    h1, h2, h3, h4 {
-        color: #f8fafc;
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff !important;
         font-weight: 600 !important;
-        letter-spacing: -0.025em;
+        letter-spacing: -0.025em !important;
+    }
+    
+    /* Matte Solid white buttons (Vercel style) */
+    div.stButton > button {
+        background-color: #ffffff !important;
+        color: #09090b !important;
+        font-weight: 600 !important;
+        border: 1px solid #ffffff !important;
+        border-radius: 6px !important;
+        padding: 8px 18px !important;
+        transition: all 0.15s ease !important;
+        width: auto !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    }
+    
+    div.stButton > button:hover {
+        background-color: #f4f4f5 !important;
+        color: #09090b !important;
+        border-color: #f4f4f5 !important;
+    }
+    
+    div.stButton > button:active {
+        transform: translateY(1px) !important;
+    }
+ 
+    /* Style selectboxes and text inputs */
+    .stTextInput input, .stSelectbox [data-baseweb="select"], .stMultiSelect [data-baseweb="select"], .stNumberInput input {
+        background-color: #09090b !important;
+        border: 1px solid #27272a !important;
+        border-radius: 8px !important;
+        color: #fafafa !important;
+        font-size: 0.9rem !important;
+    }
+    .stTextInput input:focus, .stSelectbox [data-baseweb="select"]:focus, .stMultiSelect [data-baseweb="select"]:focus, .stNumberInput input:focus {
+        border-color: #52525b !important;
+        box-shadow: none !important;
+    }
+    .stSelectbox [data-baseweb="select"]:hover, .stMultiSelect [data-baseweb="select"]:hover {
+        border-color: #3f3f46 !important;
+    }
+    
+    /* Alerts customization */
+    div[data-testid="stAlert"] {
+        background: #09090b !important;
+        border: 1px solid #27272a !important;
+        border-radius: 8px !important;
     }
     
     .highlight-card {
-        background: linear-gradient(135deg, rgba(30, 27, 75, 0.5) 0%, rgba(49, 16, 66, 0.5) 100%);
-        border: 1px solid rgba(139, 92, 246, 0.25);
-        border-radius: 12px;
-        padding: 24px;
-        margin-bottom: 24px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        background: #09090b !important;
+        border: 1px solid #27272a !important;
+        border-radius: 8px !important;
+        padding: 20px !important;
+        margin-bottom: 20px !important;
     }
     
     .sim-card {
-        background: rgba(30, 41, 59, 0.3);
-        border-radius: 12px;
-        border: 1px solid rgba(59, 130, 246, 0.25);
-        padding: 20px;
-        margin-bottom: 20px;
+        background: #09090b !important;
+        border-radius: 8px !important;
+        border: 1px solid #27272a !important;
+        padding: 20px !important;
+        margin-bottom: 20px !important;
+    }
+ 
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #27272a;
+        border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #3f3f46;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -152,7 +225,7 @@ if "data_loaded" not in st.session_state or not st.session_state.data_loaded:
         st.session_state.data_loaded = False
         st.error(f"Error loading project data: {e}")
 
-st.sidebar.markdown("<h2 style='color: #38bdf8;'>Controls & Settings</h2>", unsafe_allow_html=True)
+st.sidebar.markdown("<h2 style='color: #ffffff; font-weight: 600; font-size: 1.35rem; letter-spacing: -0.02em;'>Controls & Settings</h2>", unsafe_allow_html=True)
 st.sidebar.markdown("---")
 
 total_budget = st.sidebar.number_input(
@@ -198,8 +271,12 @@ if st.session_state.data_loaded:
     if total_shares != 100:
         st.sidebar.warning(f"Current budget shares sum to {total_shares}%. Adjust to equal exactly 100%.")
 
-st.markdown("<h1 style='text-align: center; margin-bottom: 5px;'>Multi-Touch Marketing Attribution Suite</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 1.1rem; margin-bottom: 30px;'>Solving Last-Touch Bias with Markov Chain Probability Modeling</p>", unsafe_allow_html=True)
+st.markdown("""
+<div style="text-align: center; padding: 40px 0px 45px 0px; margin-bottom: 20px;">
+    <h1 style="font-size: 3rem; font-weight: 700; margin: 0; color: #ffffff; letter-spacing: -0.03em;">Attribo</h1>
+    <p style="font-size: 1.1rem; color: #94a3b8; margin: 8px 0 0 0; font-weight: 500; letter-spacing: -0.01em;">Markov Chain Multi-Touch Marketing Attribution</p>
+</div>
+""", unsafe_allow_html=True)
 
 if st.session_state.data_loaded:
     df_raw = st.session_state.df_raw
